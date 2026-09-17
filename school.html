@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bright Future School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        header h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 21px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: white;
+            color: #1d4ed8;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #1d4ed8;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        @media (max-width: 700px) {
+            header h1 {
+                font-size: 40px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Bright Future School</h1>
+
+        <p>
+            Building knowledge, character and a brighter future.
+        </p>
+
+        <a href="index.html" class="btn">
+            ← Back to Portfolio
+        </a>
+
+    </header>
+
+
+    <section>
+
+        <h2>Why Choose Us?</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Qualified Teachers</h3>
+
+                <p>
+                    Our students learn from dedicated
+                    and experienced teachers.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Modern Learning</h3>
+
+                <p>
+                    We use modern teaching methods
+                    to help students learn effectively.
+                </p>
+            </div>
+
+
+            <div class="card">
+                <h3>Student Development</h3>
+
+                <p>
+                    We help students develop academically,
+                    socially and creatively.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Our Programs</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Science</h3>
+                <p>
+                    Mathematics, Physics, Chemistry and Biology.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Arts</h3>
+                <p>
+                    Literature, History, Government and creative subjects.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Technology</h3>
+                <p>
+                    Computer studies and digital skills.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <p>
+            © 2026 Bright Future School
+        </p>
+
+    </footer>
+
+</body>
+</html>
