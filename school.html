@@ -1,201 +1,916 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bright Future School</title>
+  <title>School Website | Johnbosco</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
-            color: #1e293b;
-            background: #f8fafc;
-        }
+    :root {
+      --bg: #030712;
+      --card: rgba(15, 23, 42, 0.68);
+      --border: rgba(148, 163, 184, 0.15);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+    }
 
-        header {
-            background: linear-gradient(135deg, #1e3a8a, #2563eb);
-            color: white;
-            text-align: center;
-            padding: 90px 20px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        header p {
-            font-size: 21px;
-            margin-bottom: 30px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(56,189,248,.12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(129,140,248,.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: white;
-            color: #1d4ed8;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
+    /* NAV */
 
-        section {
-            max-width: 1000px;
-            margin: auto;
-            padding: 70px 20px;
-        }
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
 
-        h2 {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 35px;
-        }
+      width: min(1100px, 92%);
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+      padding: 14px 20px;
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-        .card h3 {
-            margin-bottom: 15px;
-            color: #1d4ed8;
-        }
+      background: rgba(2, 6, 23, .75);
+      backdrop-filter: blur(18px);
 
-        .card p {
-            line-height: 1.6;
-        }
+      border: 1px solid var(--border);
+      border-radius: 18px;
 
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
+      z-index: 1000;
+    }
 
-        @media (max-width: 700px) {
-            header h1 {
-                font-size: 40px;
-            }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
 
-            .cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .back {
+      color: white;
+      text-decoration: none;
+
+      padding: 9px 16px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      transition: .3s;
+    }
+
+    .back:hover {
+      border-color: var(--accent);
+      background: rgba(56,189,248,.08);
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 140px 20px 80px;
+
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      background: rgba(56,189,248,.12);
+
+      filter: blur(120px);
+
+      border-radius: 50%;
+
+      top: 15%;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 16px;
+
+      color: var(--accent);
+
+      background: rgba(56,189,248,.07);
+
+      border: 1px solid rgba(56,189,248,.3);
+
+      border-radius: 50px;
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 86px);
+
+      line-height: 1.05;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 25px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      margin: 5px;
+
+      border-radius: 11px;
+
+      background: var(--accent);
+
+      color: #020617;
+
+      text-decoration: none;
+
+      font-weight: 600;
+
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+
+      box-shadow: 0 15px 35px rgba(56,189,248,.18);
+    }
+
+    .btn-outline {
+      background: transparent;
+
+      color: white;
+
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+
+      background: rgba(56,189,248,.08);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-heading {
+      max-width: 700px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .section-heading span {
+      color: var(--accent);
+
+      font-size: 13px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 48px);
+
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* INFO */
+
+    .info-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 2fr 1fr;
+
+      gap: 25px;
+    }
+
+    .glass {
+      padding: 35px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      backdrop-filter: blur(20px);
+
+      transition: .3s;
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(56,189,248,.35);
+    }
+
+    .glass h3 {
+      font-size: 23px;
+
+      margin-bottom: 15px;
+    }
+
+    .glass p {
+      color: var(--muted);
+    }
+
+    /* STATS */
+
+    .stats {
+      max-width: 1100px;
+
+      margin: 40px auto 0;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .stat {
+      padding: 30px;
+
+      text-align: center;
+
+      background: rgba(15,23,42,.5);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 32px;
+    }
+
+    .stat span {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* FEATURES */
+
+    .features {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .feature {
+      padding: 30px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(15,23,42,.85),
+        rgba(15,23,42,.45)
+      );
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      transition: .3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(56,189,248,.4);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: rgba(56,189,248,.1);
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* TECHNOLOGIES */
+
+    .tech {
+      max-width: 800px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .tech span {
+      padding: 10px 18px;
+
+      border-radius: 50px;
+
+      background: rgba(56,189,248,.08);
+
+      border: 1px solid rgba(56,189,248,.18);
+
+      color: #cbd5e1;
+
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      max-width: 1000px;
+
+      margin: 30px auto 100px;
+
+      padding: 70px 30px;
+
+      text-align: center;
+
+      border-radius: 28px;
+
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(56,189,248,.12),
+          transparent 60%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 50px);
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: var(--muted);
+
+      max-width: 600px;
+
+      margin: auto;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px;
+
+      text-align: center;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ANIMATION */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      animation: reveal .9s forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav {
+        top: 10px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
+  <!-- NAVIGATION -->
 
-        <h1>Bright Future School</h1>
+  <nav>
 
-        <p>
-            Building knowledge, character and a brighter future.
-        </p>
+    <div class="logo">
+      Johnbosco.
+    </div>
 
-        <a href="index.html" class="btn">
-            ← Back to Portfolio
+    <a href="index.html" class="back">
+      ← Portfolio
+    </a>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="reveal">
+
+      <div class="badge">
+        Featured Web Development Project
+      </div>
+
+      <h1>
+        School<br>
+        <span class="gradient">Website</span>
+      </h1>
+
+      <p>
+        A professional school website concept designed
+        to help schools communicate with students,
+        parents, teachers, and the wider community.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#overview" class="btn">
+          Explore Project
         </a>
 
-    </header>
+        <a href="index.html" class="btn btn-outline">
+          Back to Portfolio
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
-    <section>
+  <!-- OVERVIEW -->
 
-        <h2>Why Choose Us?</h2>
+  <section id="overview">
 
-        <div class="cards">
+    <div class="section-heading">
 
-            <div class="card">
-                <h3>Qualified Teachers</h3>
+      <span>01 — Overview</span>
 
-                <p>
-                    Our students learn from dedicated
-                    and experienced teachers.
-                </p>
-            </div>
+      <h2>
+        A modern digital home for schools
+      </h2>
 
+      <p>
+        Designed to make important school information
+        easy to discover while creating a professional
+        first impression.
+      </p>
 
-            <div class="card">
-                <h3>Modern Learning</h3>
-
-                <p>
-                    We use modern teaching methods
-                    to help students learn effectively.
-                </p>
-            </div>
+    </div>
 
 
-            <div class="card">
-                <h3>Student Development</h3>
+    <div class="info-grid">
 
-                <p>
-                    We help students develop academically,
-                    socially and creatively.
-                </p>
-            </div>
+      <div class="glass">
 
-        </div>
-
-    </section>
-
-
-    <section>
-
-        <h2>Our Programs</h2>
-
-        <div class="cards">
-
-            <div class="card">
-                <h3>Science</h3>
-                <p>
-                    Mathematics, Physics, Chemistry and Biology.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Arts</h3>
-                <p>
-                    Literature, History, Government and creative subjects.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Technology</h3>
-                <p>
-                    Computer studies and digital skills.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <footer>
+        <h3>
+          Project Concept
+        </h3>
 
         <p>
-            © 2026 Bright Future School
+          This school website provides a central online
+          platform where visitors can learn about the
+          school, discover academic programs, view
+          important information, and contact the school.
         </p>
 
-    </footer>
+      </div>
+
+
+      <div class="glass">
+
+        <h3>
+          Project Type
+        </h3>
+
+        <p>
+          Education Website
+          <br><br>
+          Responsive Website
+          <br><br>
+          Client-ready Concept
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <strong>100%</strong>
+
+        <span>
+          Responsive
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>6+</strong>
+
+        <span>
+          Core Sections
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>Fast</strong>
+
+        <span>
+          User Experience
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>
+        02 — Features
+      </span>
+
+      <h2>
+        Designed for students & parents
+      </h2>
+
+      <p>
+        The website organizes important information
+        into a simple and accessible experience.
+      </p>
+
+    </div>
+
+
+    <div class="features">
+
+      <div class="feature">
+
+        <div class="icon">
+          🎓
+        </div>
+
+        <h3>
+          About the School
+        </h3>
+
+        <p>
+          Introduce the school's history,
+          mission, vision, and values.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📚
+        </div>
+
+        <h3>
+          Academic Programs
+        </h3>
+
+        <p>
+          Showcase departments, subjects,
+          programs, and learning opportunities.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          🏫
+        </div>
+
+        <h3>
+          School Facilities
+        </h3>
+
+        <p>
+          Highlight classrooms, laboratories,
+          libraries, sports facilities, and more.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📢
+        </div>
+
+        <h3>
+          News & Announcements
+        </h3>
+
+        <p>
+          Share school news, events,
+          announcements, and important updates.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📱
+        </div>
+
+        <h3>
+          Mobile Friendly
+        </h3>
+
+        <p>
+          Students and parents can access
+          the website comfortably from phones.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📞
+        </div>
+
+        <h3>
+          Contact System
+        </h3>
+
+        <p>
+          Make it easy for parents and visitors
+          to contact the school.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TECHNOLOGIES -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>
+        03 — Technology
+      </span>
+
+      <h2>
+        Built with modern web technology
+      </h2>
+
+      <p>
+        A lightweight technology stack designed
+        for speed, responsiveness, and easy maintenance.
+      </p>
+
+    </div>
+
+
+    <div class="tech">
+
+      <span>
+        HTML5
+      </span>
+
+      <span>
+        CSS3
+      </span>
+
+      <span>
+        JavaScript
+      </span>
+
+      <span>
+        Responsive Design
+      </span>
+
+      <span>
+        Flexbox
+      </span>
+
+      <span>
+        CSS Grid
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <div class="cta">
+
+    <h2>
+      Need a school website?
+    </h2>
+
+    <p>
+      I can build a modern, responsive website
+      for schools and educational organizations.
+    </p>
+
+    <div class="buttons">
+
+      <a href="index.html#contact" class="btn">
+        Hire Me
+      </a>
+
+      <a href="index.html#pricing" class="btn btn-outline">
+        View Pricing
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Johnbosco. All Rights Reserved.
+
+  </footer>
 
 </body>
 </html>

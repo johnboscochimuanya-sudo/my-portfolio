@@ -1,236 +1,1107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pro Business</title>
+  <title>Business Website | Johnbosco</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8fafc;
-            color: #0f172a;
-        }
+    :root {
+      --bg: #030712;
+      --bg2: #0b1120;
+      --card: rgba(15, 23, 42, 0.68);
+      --border: rgba(148, 163, 184, 0.15);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+    }
 
-        header {
-            background: linear-gradient(135deg, #111827, #374151);
-            color: white;
-            text-align: center;
-            padding: 90px 20px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        header p {
-            font-size: 21px;
-            margin-bottom: 30px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(56,189,248,.12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(129,140,248,.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
+    /* ================= NAVIGATION ================= */
 
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 70px 20px;
-        }
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
 
-        h2 {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 35px;
-        }
+      width: min(1100px, 92%);
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+      padding: 14px 20px;
 
-        .service {
-            background: white;
-            padding: 35px 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-        .service h3 {
-            color: #2563eb;
-            margin-bottom: 15px;
-            font-size: 23px;
-        }
+      background: rgba(2, 6, 23, .75);
+      backdrop-filter: blur(18px);
 
-        .service p {
-            line-height: 1.6;
-        }
+      border: 1px solid var(--border);
+      border-radius: 18px;
 
-        .about {
-            text-align: center;
-            max-width: 800px;
-        }
+      z-index: 1000;
+    }
 
-        .about p {
-            font-size: 19px;
-            line-height: 1.8;
-        }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
 
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
+    .back {
+      color: white;
+      text-decoration: none;
 
-        @media (max-width: 700px) {
+      padding: 9px 16px;
 
-            header h1 {
-                font-size: 40px;
-            }
+      border: 1px solid var(--border);
+      border-radius: 10px;
 
-            .services {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+      transition: .3s;
+    }
+
+    .back:hover {
+      border-color: var(--accent);
+      background: rgba(56,189,248,.08);
+      transform: translateY(-2px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      padding: 140px 20px 80px;
+
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 520px;
+      height: 520px;
+
+      background: rgba(56,189,248,.12);
+
+      filter: blur(130px);
+
+      border-radius: 50%;
+
+      top: 12%;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 16px;
+
+      color: var(--accent);
+
+      background: rgba(56,189,248,.07);
+
+      border: 1px solid rgba(56,189,248,.3);
+
+      border-radius: 50px;
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 86px);
+
+      line-height: 1.05;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 25px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+
+      padding: 13px 24px;
+
+      margin: 5px;
+
+      border-radius: 11px;
+
+      background: var(--accent);
+
+      color: #020617;
+
+      text-decoration: none;
+
+      font-weight: 600;
+
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+
+      box-shadow: 0 15px 35px rgba(56,189,248,.18);
+    }
+
+    .btn-outline {
+      background: transparent;
+
+      color: white;
+
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+
+      background: rgba(56,189,248,.08);
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-heading {
+      max-width: 720px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .section-heading span {
+      color: var(--accent);
+
+      font-size: 13px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 48px);
+
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* ================= OVERVIEW ================= */
+
+    .info-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 2fr 1fr;
+
+      gap: 25px;
+    }
+
+    .glass {
+      padding: 35px;
+
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      backdrop-filter: blur(20px);
+
+      transition: .3s;
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(56,189,248,.35);
+    }
+
+    .glass h3 {
+      font-size: 23px;
+
+      margin-bottom: 15px;
+    }
+
+    .glass p {
+      color: var(--muted);
+    }
+
+    /* ================= STATS ================= */
+
+    .stats {
+      max-width: 1100px;
+
+      margin: 40px auto 0;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .stat {
+      padding: 30px;
+
+      text-align: center;
+
+      background: rgba(15,23,42,.5);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--accent);
+
+      font-size: 32px;
+
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= FEATURES ================= */
+
+    .features {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .feature {
+      padding: 30px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(15,23,42,.85),
+        rgba(15,23,42,.45)
+      );
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      transition: .3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(56,189,248,.4);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: rgba(56,189,248,.1);
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= BUSINESS BENEFITS ================= */
+
+    .benefits {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 22px;
+    }
+
+    .benefit {
+      display: flex;
+
+      gap: 18px;
+
+      padding: 25px;
+
+      background: rgba(15,23,42,.55);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+    }
+
+    .check {
+      width: 40px;
+      height: 40px;
+
+      min-width: 40px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: rgba(56,189,248,.1);
+
+      color: var(--accent);
+
+      font-weight: bold;
+    }
+
+    .benefit h3 {
+      margin-bottom: 5px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= TECHNOLOGY ================= */
+
+    .tech {
+      max-width: 800px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .tech span {
+      padding: 10px 18px;
+
+      border-radius: 50px;
+
+      background: rgba(56,189,248,.08);
+
+      border: 1px solid rgba(56,189,248,.18);
+
+      color: #cbd5e1;
+
+      font-size: 14px;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta {
+      max-width: 1000px;
+
+      margin: 30px auto 100px;
+
+      padding: 75px 30px;
+
+      text-align: center;
+
+      border-radius: 28px;
+
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(56,189,248,.12),
+          transparent 60%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 50px);
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: var(--muted);
+
+      max-width: 620px;
+
+      margin: auto;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 35px;
+
+      text-align: center;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= ANIMATION ================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      animation: reveal .9s forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        top: 10px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
+  <!-- ================= NAVIGATION ================= -->
 
-        <h1>Pro Business</h1>
+  <nav>
 
-        <p>
-            Professional solutions for modern businesses.
-        </p>
+    <div class="logo">
+      Johnbosco.
+    </div>
 
-        <a href="index.html" class="btn">
-            ← Back to Portfolio
+    <a href="index.html" class="back">
+      ← Portfolio
+    </a>
+
+  </nav>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="reveal">
+
+      <div class="badge">
+        Featured Web Development Project
+      </div>
+
+      <h1>
+        Business<br>
+        <span class="gradient">Website</span>
+      </h1>
+
+      <p>
+        A premium business website concept created to
+        establish credibility, showcase services, attract
+        customers, and give a company a powerful online presence.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#overview" class="btn">
+          Explore Project
         </a>
 
-    </header>
+        <a href="index.html" class="btn btn-outline">
+          Back to Portfolio
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
-    <section class="about">
+  <!-- ================= OVERVIEW ================= -->
 
-        <h2>About Our Business</h2>
+  <section id="overview">
+
+    <div class="section-heading">
+
+      <span>
+        01 — Overview
+      </span>
+
+      <h2>
+        Built to help businesses grow online
+      </h2>
+
+      <p>
+        A professional digital presence can help a business
+        clearly communicate its services and make it easier
+        for potential customers to get in touch.
+      </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+      <div class="glass">
+
+        <h3>
+          Project Concept
+        </h3>
 
         <p>
-            We help businesses grow by providing reliable,
-            professional and modern solutions designed around
-            their customers' needs.
+          This business website is designed as a modern
+          company platform where visitors can discover
+          services, learn about the business, understand
+          its value, and contact the company.
         </p>
 
-    </section>
+      </div>
 
 
-    <section>
+      <div class="glass">
 
-        <h2>Our Services</h2>
+        <h3>
+          Project Type
+        </h3>
 
-        <div class="services">
+        <p>
+          Business Website
+          <br><br>
+          Corporate Landing Page
+          <br><br>
+          Responsive Website
+        </p>
 
-            <div class="service">
+      </div>
 
-                <h3>Web Design</h3>
-
-                <p>
-                    Modern and responsive websites
-                    designed for businesses.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>Digital Solutions</h3>
-
-                <p>
-                    Technology solutions that help
-                    businesses work more efficiently.
-                </p>
-
-            </div>
+    </div>
 
 
-            <div class="service">
+    <!-- STATS -->
 
-                <h3>Business Support</h3>
+    <div class="stats">
 
-                <p>
-                    Professional support to help businesses
-                    improve their online presence.
-                </p>
+      <div class="stat">
 
-            </div>
+        <strong>
+          100%
+        </strong>
+
+        <span>
+          Responsive
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          6+
+        </strong>
+
+        <span>
+          Core Sections
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <strong>
+          Fast
+        </strong>
+
+        <span>
+          User Experience
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURES ================= -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>
+        02 — Features
+      </span>
+
+      <h2>
+        Designed around the customer
+      </h2>
+
+      <p>
+        Every section is designed to communicate value
+        and guide visitors toward taking action.
+      </p>
+
+    </div>
+
+
+    <div class="features">
+
+      <div class="feature">
+
+        <div class="icon">
+          💼
+        </div>
+
+        <h3>
+          Business Introduction
+        </h3>
+
+        <p>
+          Clearly introduce the company, its mission,
+          and what makes its services valuable.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          🚀
+        </div>
+
+        <h3>
+          Services
+        </h3>
+
+        <p>
+          Showcase the main services offered by
+          the company in an organized layout.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          ⭐
+        </div>
+
+        <h3>
+          Why Choose Us
+        </h3>
+
+        <p>
+          Highlight important benefits and reasons
+          customers may want to work with the business.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📱
+        </div>
+
+        <h3>
+          Mobile Friendly
+        </h3>
+
+        <p>
+          The website adapts to smartphones,
+          tablets, laptops, and desktop screens.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          📞
+        </div>
+
+        <h3>
+          Contact System
+        </h3>
+
+        <p>
+          Give potential customers an easy way
+          to send enquiries and start conversations.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">
+          ⚡
+        </div>
+
+        <h3>
+          Fast Experience
+        </h3>
+
+        <p>
+          A lightweight structure helps visitors
+          navigate the website smoothly.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= BENEFITS ================= -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>
+        03 — Business Benefits
+      </span>
+
+      <h2>
+        More than just a beautiful website
+      </h2>
+
+      <p>
+        The goal is to create a website that supports
+        the business and makes the customer journey easier.
+      </p>
+
+    </div>
+
+
+    <div class="benefits">
+
+      <div class="benefit">
+
+        <div class="check">
+          ✓
+        </div>
+
+        <div>
+
+          <h3>
+            Professional Image
+          </h3>
+
+          <p>
+            Present the company with a modern and
+            trustworthy digital appearance.
+          </p>
 
         </div>
 
-    </section>
+      </div>
 
 
-    <section>
+      <div class="benefit">
 
-        <h2>Why Choose Us?</h2>
+        <div class="check">
+          ✓
+        </div>
 
-        <div class="services">
+        <div>
 
-            <div class="service">
-                <h3>Professional</h3>
-                <p>
-                    We focus on quality and professionalism.
-                </p>
-            </div>
+          <h3>
+            Clear Services
+          </h3>
 
-            <div class="service">
-                <h3>Reliable</h3>
-                <p>
-                    We deliver solutions designed around
-                    your business needs.
-                </p>
-            </div>
-
-            <div class="service">
-                <h3>Modern</h3>
-                <p>
-                    We use modern technology to create
-                    effective digital experiences.
-                </p>
-            </div>
+          <p>
+            Help visitors quickly understand what
+            the business offers.
+          </p>
 
         </div>
 
-    </section>
+      </div>
 
 
-    <footer>
+      <div class="benefit">
 
-        <p>
-            © 2026 Pro Business
-        </p>
+        <div class="check">
+          ✓
+        </div>
 
-    </footer>
+        <div>
+
+          <h3>
+            Customer Accessibility
+          </h3>
+
+          <p>
+            Make business information available
+            to customers at any time.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="benefit">
+
+        <div class="check">
+          ✓
+        </div>
+
+        <div>
+
+          <h3>
+            More Enquiries
+          </h3>
+
+          <p>
+            Provide clear calls-to-action that make
+            contacting the business easier.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TECHNOLOGY ================= -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>
+        04 — Technology
+      </span>
+
+      <h2>
+        Built with modern web technology
+      </h2>
+
+      <p>
+        A clean technology stack keeps the project
+        responsive, lightweight, and easy to maintain.
+      </p>
+
+    </div>
+
+
+    <div class="tech">
+
+      <span>
+        HTML5
+      </span>
+
+      <span>
+        CSS3
+      </span>
+
+      <span>
+        JavaScript
+      </span>
+
+      <span>
+        Responsive Design
+      </span>
+
+      <span>
+        Flexbox
+      </span>
+
+      <span>
+        CSS Grid
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+
+  <div class="cta">
+
+    <h2>
+      Need a website for your business?
+    </h2>
+
+    <p>
+      I build modern, responsive websites designed
+      to give businesses a professional online presence.
+    </p>
+
+    <div class="buttons">
+
+      <a href="index.html#contact" class="btn">
+        Hire Me
+      </a>
+
+      <a href="index.html#pricing" class="btn btn-outline">
+        View Pricing
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    © 2026 Johnbosco. All Rights Reserved.
+
+  </footer>
 
 </body>
-
 </html>

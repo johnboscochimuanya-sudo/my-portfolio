@@ -1,148 +1,845 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <title>Restaurant Website | Johnbosco</title>
 
-        body {
-            font-family: Arial, sans-serif;
-            color: white;
-            background: linear-gradient(135deg, #7f1d1d, #ea580c);
-            min-height: 100vh;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
-        }
+    :root {
+      --bg: #030712;
+      --bg2: #0b1120;
+      --card: rgba(15, 23, 42, 0.65);
+      --border: rgba(148, 163, 184, 0.15);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #818cf8;
+    }
 
-        header h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        header p {
-            font-size: 21px;
-            margin-bottom: 30px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: white;
-            color: #c2410c;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: bold;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(56,189,248,.12), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(129,140,248,.10), transparent 30%),
+        var(--bg);
 
-        .menu {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .menu h2 {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 30px;
-        }
+    /* ================= NAVBAR ================= */
 
-        .items {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+    nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 92%);
+      padding: 14px 20px;
 
-        .item {
-            background: rgba(255,255,255,0.15);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-        .item h3 {
-            margin-bottom: 10px;
-        }
+      background: rgba(2, 6, 23, .72);
+      backdrop-filter: blur(18px);
 
-        .price {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 20px;
-        }
+      border: 1px solid var(--border);
+      border-radius: 18px;
 
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-        }
+      z-index: 1000;
+    }
 
-        @media (max-width: 700px) {
-            header h1 {
-                font-size: 40px;
-            }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
 
-            .items {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .back {
+      text-decoration: none;
+      color: white;
+
+      padding: 9px 16px;
+      border-radius: 10px;
+
+      border: 1px solid var(--border);
+
+      transition: .3s;
+    }
+
+    .back:hover {
+      background: rgba(56,189,248,.12);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 140px 20px 80px;
+
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      background: rgba(56,189,248,.12);
+
+      filter: blur(120px);
+
+      border-radius: 50%;
+
+      top: 15%;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      z-index: -1;
+    }
+
+    .badge {
+      display: inline-block;
+
+      padding: 8px 16px;
+
+      border: 1px solid rgba(56,189,248,.3);
+
+      border-radius: 50px;
+
+      color: var(--accent);
+
+      background: rgba(56,189,248,.07);
+
+      font-size: 13px;
+
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 86px);
+
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+
+      letter-spacing: -3px;
+    }
+
+    .gradient {
+      background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+
+      margin: auto;
+
+      color: var(--muted);
+
+      font-size: 18px;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .btn {
+      display: inline-block;
+
+      text-decoration: none;
+
+      padding: 13px 24px;
+
+      border-radius: 11px;
+
+      margin: 5px;
+
+      font-weight: 600;
+
+      background: var(--accent);
+
+      color: #020617;
+
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(56,189,248,.18);
+    }
+
+    .btn-outline {
+      background: transparent;
+
+      color: white;
+
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      background: rgba(56,189,248,.08);
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .section-heading span {
+      color: var(--accent);
+
+      font-size: 13px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(32px, 5vw, 48px);
+
+      margin: 10px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* ================= PROJECT INFO ================= */
+
+    .info-grid {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: 2fr 1fr;
+
+      gap: 25px;
+    }
+
+    .glass {
+      background: var(--card);
+
+      border: 1px solid var(--border);
+
+      border-radius: 22px;
+
+      padding: 35px;
+
+      backdrop-filter: blur(20px);
+
+      transition: .3s;
+    }
+
+    .glass:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(56,189,248,.35);
+    }
+
+    .glass h3 {
+      font-size: 23px;
+
+      margin-bottom: 15px;
+    }
+
+    .glass p {
+      color: var(--muted);
+    }
+
+    /* ================= STATS ================= */
+
+    .stats {
+      max-width: 1100px;
+
+      margin: 40px auto 0;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .stat {
+      text-align: center;
+
+      padding: 30px;
+
+      background: rgba(15,23,42,.5);
+
+      border: 1px solid var(--border);
+
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+
+      font-size: 32px;
+
+      color: var(--accent);
+
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= FEATURES ================= */
+
+    .features {
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .feature {
+      padding: 30px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(15,23,42,.85),
+        rgba(15,23,42,.45)
+      );
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      transition: .3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+
+      border-color: rgba(56,189,248,.4);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background: rgba(56,189,248,.1);
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= TECHNOLOGIES ================= */
+
+    .tech {
+      max-width: 800px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+    }
+
+    .tech span {
+      padding: 10px 18px;
+
+      border-radius: 50px;
+
+      background: rgba(56,189,248,.08);
+
+      border: 1px solid rgba(56,189,248,.18);
+
+      color: #cbd5e1;
+
+      font-size: 14px;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta {
+      max-width: 1000px;
+
+      margin: 30px auto 100px;
+
+      padding: 70px 30px;
+
+      text-align: center;
+
+      border-radius: 28px;
+
+      border: 1px solid var(--border);
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(56,189,248,.12),
+          transparent 60%
+        );
+    }
+
+    .cta h2 {
+      font-size: clamp(32px, 5vw, 50px);
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: var(--muted);
+
+      max-width: 600px;
+
+      margin: auto;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 35px;
+
+      text-align: center;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 14px;
+    }
+
+    /* ================= ANIMATIONS ================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform: translateY(30px);
+
+      animation: reveal .9s forwards;
+    }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        top: 10px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Delicious Restaurant</h1>
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">Johnbosco.</div>
+
+    <a href="index.html" class="back">
+      ← Portfolio
+    </a>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="reveal">
+
+      <div class="badge">
+        Featured Web Development Project
+      </div>
+
+      <h1>
+        Restaurant<br>
+        <span class="gradient">Website</span>
+      </h1>
+
+      <p>
+        A premium restaurant website concept designed
+        to create a strong online presence, showcase
+        delicious food, and make it easy for customers
+        to connect with the business.
+      </p>
+
+      <div class="buttons">
+
+        <a href="#overview" class="btn">
+          Explore Project
+        </a>
+
+        <a href="index.html" class="btn btn-outline">
+          Back to Portfolio
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- OVERVIEW -->
+
+  <section id="overview">
+
+    <div class="section-heading">
+
+      <span>01 — Overview</span>
+
+      <h2>Built for a modern restaurant</h2>
+
+      <p>
+        This project focuses on combining elegant design,
+        clear information, and a smooth customer experience.
+      </p>
+
+    </div>
+
+
+    <div class="info-grid">
+
+      <div class="glass">
+
+        <h3>Project Concept</h3>
 
         <p>
-            Fresh food, great taste and excellent service.
+          The website provides a professional digital
+          experience for a restaurant. Customers can
+          discover the restaurant, explore the menu,
+          learn about the business, and get in touch
+          quickly from any device.
         </p>
 
-        <a href="index.html" class="btn">
-            ← Back to Portfolio
-        </a>
-    </header>
+      </div>
 
 
-    <section class="menu">
+      <div class="glass">
 
-        <h2>Our Menu</h2>
+        <h3>Project Type</h3>
 
-        <div class="items">
+        <p>
+          Restaurant / Food Business
+          <br><br>
+          Responsive Website
+          <br><br>
+          Client-ready Concept
+        </p>
 
-            <div class="item">
-                <h3>Jollof Rice</h3>
-                <p>Delicious Nigerian-style jollof rice.</p>
-                <div class="price">₦3,500</div>
-            </div>
+      </div>
 
-            <div class="item">
-                <h3>Fried Rice</h3>
-                <p>Fresh fried rice served with chicken.</p>
-                <div class="price">₦4,000</div>
-            </div>
-
-            <div class="item">
-                <h3>Grilled Chicken</h3>
-                <p>Juicy grilled chicken with special seasoning.</p>
-                <div class="price">₦5,000</div>
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
 
-    <footer>
-        <p>© 2026 Delicious Restaurant</p>
-    </footer>
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>100%</strong>
+        <span>Responsive</span>
+      </div>
+
+      <div class="stat">
+        <strong>3+</strong>
+        <span>Core Features</span>
+      </div>
+
+      <div class="stat">
+        <strong>Fast</strong>
+        <span>User Experience</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>02 — Features</span>
+
+      <h2>Everything customers need</h2>
+
+      <p>
+        Designed around a simple and convenient customer journey.
+      </p>
+
+    </div>
+
+
+    <div class="features">
+
+      <div class="feature">
+
+        <div class="icon">🍽️</div>
+
+        <h3>Digital Menu</h3>
+
+        <p>
+          Present meals, prices, descriptions,
+          and special offers in a clean layout.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">📱</div>
+
+        <h3>Mobile First</h3>
+
+        <p>
+          Customers can browse the website
+          comfortably on smartphones and tablets.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">📞</div>
+
+        <h3>Easy Contact</h3>
+
+        <p>
+          Make it simple for customers to contact
+          the restaurant or make an enquiry.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">⚡</div>
+
+        <h3>Fast Experience</h3>
+
+        <p>
+          Lightweight structure designed for
+          a smooth browsing experience.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">✨</div>
+
+        <h3>Modern Design</h3>
+
+        <p>
+          Premium visual styling helps the restaurant
+          create a professional first impression.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="icon">📍</div>
+
+        <h3>Location Ready</h3>
+
+        <p>
+          Restaurant location and contact information
+          can be clearly displayed for customers.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TECHNOLOGIES -->
+
+  <section>
+
+    <div class="section-heading">
+
+      <span>03 — Technology</span>
+
+      <h2>Built with modern web technology</h2>
+
+      <p>
+        The project uses simple, reliable technologies
+        suitable for a fast responsive website.
+      </p>
+
+    </div>
+
+
+    <div class="tech">
+
+      <span>HTML5</span>
+
+      <span>CSS3</span>
+
+      <span>JavaScript</span>
+
+      <span>Responsive Design</span>
+
+      <span>Flexbox</span>
+
+      <span>CSS Grid</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <div class="cta">
+
+    <h2>
+      Want a website like this?
+    </h2>
+
+    <p>
+      I build modern, responsive websites for
+      restaurants, businesses, schools, and personal brands.
+    </p>
+
+    <div class="buttons">
+
+      <a href="index.html#contact" class="btn">
+        Hire Me
+      </a>
+
+      <a href="index.html#pricing" class="btn btn-outline">
+        View Pricing
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Johnbosco. All Rights Reserved.
+
+  </footer>
 
 </body>
 </html>
